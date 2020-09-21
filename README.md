@@ -1,59 +1,60 @@
 Introduction
-This assignment uses data from the UC Irvine Machine Learning Repository, a popular repository for machine learning datasets. In particular, we will be using the "Individual household electric power consumption Data Set" which I have made available on the course web site:
+The project consists of two parts:
 
-Dataset: Electric power consumption [20Mb]
+A simulation exercise.
+Basic inferential data analysis.
+You will create a report to answer the questions. Given the nature of the series, ideally you'll use knitr to create the reports and convert to a pdf. (I will post a very simple introduction to knitr). However, feel free to use whatever software that you would like to create your pdf.
 
-Description: Measurements of electric power consumption in one household with a one-minute sampling rate over a period of almost 4 years. Different electrical quantities and some sub-metering values are available.
+Each pdf report should be no more than 3 pages with 3 pages of supporting appendix material if needed (code, figures, etcetera).
 
-The following descriptions of the 9 variables in the dataset are taken from the UCI web site:
+Review criteria
+less 
+Did you show where the distribution is centered at and compare it to the theoretical center of the distribution?
+Did you show how variable it is and compare it to the theoretical variance of the distribution?
+Did you perform an exploratory data analysis of at least a single plot or table highlighting basic features of the data?
+Did the student perform some relevant confidence intervals and/or tests?
+Were the results of the tests and/or intervals interpreted in the context of the problem correctly?
+Did the student describe the assumptions needed for their conclusions?
+Part 1: Simulation Exercise Instructions
+less 
+In this project you will investigate the exponential distribution in R and compare it with the Central Limit Theorem. The exponential distribution can be simulated in R with rexp(n, lambda) where lambda is the rate parameter. The mean of exponential distribution is 1/lambda and the standard deviation is also 1/lambda. Set lambda = 0.2 for all of the simulations. You will investigate the distribution of averages of 40 exponentials. Note that you will need to do a thousand simulations.
 
-Date: Date in format dd/mm/yyyy
-Time: time in format hh:mm:ss
-Global_active_power: household global minute-averaged active power (in kilowatt)
-Global_reactive_power: household global minute-averaged reactive power (in kilowatt)
-Voltage: minute-averaged voltage (in volt)
-Global_intensity: household global minute-averaged current intensity (in ampere)
-Sub_metering_1: energy sub-metering No. 1 (in watt-hour of active energy). It corresponds to the kitchen, containing mainly a dishwasher, an oven and a microwave (hot plates are not electric but gas powered).
-Sub_metering_2: energy sub-metering No. 2 (in watt-hour of active energy). It corresponds to the laundry room, containing a washing-machine, a tumble-drier, a refrigerator and a light.
-Sub_metering_3: energy sub-metering No. 3 (in watt-hour of active energy). It corresponds to an electric water-heater and an air-conditioner.
-Loading the data
-When loading the dataset into R, please consider the following:
+Illustrate via simulation and associated explanatory text the properties of the distribution of the mean of 40 exponentials. You should
 
-The dataset has 2,075,259 rows and 9 columns. First calculate a rough estimate of how much memory the dataset will require in memory before reading into R. Make sure your computer has enough memory (most modern computers should be fine).
+Show the sample mean and compare it to the theoretical mean of the distribution.
+Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution.
+Show that the distribution is approximately normal.
+In point 3, focus on the difference between the distribution of a large collection of random exponentials and the distribution of a large collection of averages of 40 exponentials.
 
-We will only be using data from the dates 2007-02-01 and 2007-02-02. One alternative is to read the data from just those dates rather than reading in the entire dataset and subsetting to those dates.
+As a motivating example, compare the distribution of 1000 random uniforms
 
-You may find it useful to convert the Date and Time variables to Date/Time classes in R using the strptime() and as.Date() functions.
+
+and the distribution of 1000 averages of 40 random uniforms
 
-Note that in this dataset missing values are coded as ?.
+
+This distribution looks far more Gaussian than the original uniform distribution!
 
-Making Plots
-Our overall goal here is simply to examine how household energy usage varies over a 2-day period in February, 2007. Your task is to reconstruct the following plots below, all of which were constructed using the base plotting system.
+This exercise is asking you to use your knowledge of the theory given in class to relate the two distributions.
 
-First you will need to fork and clone the following GitHub repository: https://github.com/rdpeng/ExData_Plotting1
+Confused? Try re-watching video lecture 07 for a starter on how to complete this project.
 
-For each plot you should
+Sample Project Report Structure
 
-Construct the plot and save it to a PNG file with a width of 480 pixels and a height of 480 pixels.
+Of course, there are multiple ways one could structure a report to address the requirements above. However, the more clearly you pose and answer each question, the easier it will be for reviewers to clearly identify and evaluate your work.
 
-Name each of the plot files as plot1.png, plot2.png, etc.
+A sample set of headings that could be used to guide the creation of your report might be:
 
-Create a separate R code file (plot1.R, plot2.R, etc.) that constructs the corresponding plot, i.e. code in plot1.R constructs the plot1.png plot. Your code file should include code for reading the data so that the plot can be fully reproduced. You should also include the code that creates the PNG file.
+Title (give an appropriate title) and Author Name
+Overview: In a few (2-3) sentences explain what is going to be reported on.
+Simulations: Include English explanations of the simulations you ran, with the accompanying R code. Your explanations should make clear what the R code accomplishes.
+Sample Mean versus Theoretical Mean: Include figures with titles. In the figures, highlight the means you are comparing. Include text that explains the figures and what is shown on them, and provides appropriate numbers.
+Sample Variance versus Theoretical Variance: Include figures (output from R) with titles. Highlight the variances you are comparing. Include text that explains your understanding of the differences of the variances.
+Distribution: Via figures and text, explain how one can tell the distribution is approximately normal.
+Part 2: Basic Inferential Data Analysis Instructions
+less 
+Now in the second portion of the project, we're going to analyze the ToothGrowth data in the R datasets package.
 
-Add the PNG file and R code file to your git repository
-
-When you are finished with the assignment, push your git repository to GitHub so that the GitHub version of your repository is up to date. There should be four PNG files and four R code files.
-
-The four plots that you will need to construct are shown below.
-
-Plot 1
-plot of chunk unnamed-chunk-2
-
-Plot 2
-plot of chunk unnamed-chunk-3
-
-Plot 3
-plot of chunk unnamed-chunk-4
-
-Plot 4
-plot of chunk unnamed-chunk-5
+Load the ToothGrowth data and perform some basic exploratory data analyses
+Provide a basic summary of the data.
+Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering)
+State your conclusions and the assumptions needed for your conclusions.
